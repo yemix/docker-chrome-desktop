@@ -3,6 +3,8 @@
 FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie 
 #ubuntunoble
 
+RUN ip addr show && ip route
+
 # set version label
 ARG BUILD_DATE
 ARG VERSION
