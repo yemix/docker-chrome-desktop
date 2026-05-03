@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie
+FROM ghcr.io/linuxserver/baseimage-selkies:debiantrixie 
+#ubuntunoble
 
 # set version label
 ARG BUILD_DATE
@@ -10,7 +11,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="thelamer"
 
 # title
-ENV TITLE=Chrome \
+ENV TITLE=Desktop \
     PIXELFLUX_WAYLAND=true
 
 RUN \
@@ -29,6 +30,13 @@ RUN \
     CHROME_VERSION=$(curl -sX GET http://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A 7 -m 1 'Package: google-chrome-stable' | awk -F ': ' '/Version/{print $2;exit}'); \
   fi && \
   apt-get update && \
+  apt-get install --no-install-recommends -y \
+    caja \
+    gpg \
+    libgles2-mesa-dev \
+    p7zip \
+    unzip \
+    wget && \
   apt-get install -y --no-install-recommends \
     google-chrome-stable=${CHROME_VERSION} && \
   echo "**** cleanup ****" && \
@@ -38,6 +46,12 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/* \
     /tmp/*
+    /usr/share/applications/caja-autorun-software.desktop \
+    /usr/share/applications/caja-computer.desktop \
+    /usr/share/applications/caja.desktop \
+    /usr/share/applications/caja-file-management-properties.desktop \
+    /usr/share/applications/caja-folder-handler.desktop \
+    /usr/share/applications/caja-home.desktop \
 
 # add local files
 COPY /root /
