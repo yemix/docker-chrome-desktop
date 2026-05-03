@@ -14,6 +14,8 @@ LABEL maintainer="thelamer"
 
 # title
 ENV TITLE=Desktop \
+    NO_FULL=true \
+    SELKIES_DESKTOP=true \
     PIXELFLUX_WAYLAND=true
 
 RUN \
