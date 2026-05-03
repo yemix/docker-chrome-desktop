@@ -1,13 +1,16 @@
 services:
   desktop:
-    image: lscr.io/linuxserver/chrome:latest
+    #image: lscr.io/linuxserver/chrome:latest
     container_name: desktop
+    build: 
+      context: .
+      dockerfile: Dockerfile
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
       - PASSWORD=123
-      - CHROME_CLI=https://www.linuxserver.io/ #optional
+      - CHROME_CLI=https://www.google.de/
     volumes:
       - /opt/docker_data/desktop/config:/config
     ports:
