@@ -45,13 +45,13 @@ RUN \
     /config/.cache \
     /var/lib/apt/lists/* \
     /var/tmp/* \
-    /tmp/*
+    /tmp/* \
     /usr/share/applications/caja-autorun-software.desktop \
     /usr/share/applications/caja-computer.desktop \
     /usr/share/applications/caja.desktop \
     /usr/share/applications/caja-file-management-properties.desktop \
     /usr/share/applications/caja-folder-handler.desktop \
-    /usr/share/applications/caja-home.desktop \
+    /usr/share/applications/caja-home.desktop
 
 # add local files
 COPY /root /
